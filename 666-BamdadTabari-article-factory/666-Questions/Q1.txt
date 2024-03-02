@@ -5,6 +5,7 @@
 4- typing module in python?
 5- async and await in python?
 6- what is Union type?
+******* 7- python built-in functions like "all" or "isinstance"? Write them all!! with sample!!
 
 66666666- VIN(Very Important Note): 
 Write All Of These shits sample code + docs to the handsOnPythonLearning Project
