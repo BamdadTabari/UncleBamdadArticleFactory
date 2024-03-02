@@ -1,0 +1,39 @@
+
+What Are Design Principles In Programming? 
+
+Design principles in programming are a set of guidelines and best practices 
+that help developers create well-structured, maintainable, and efficient software systems. 
+These principles provide a foundation for writing code that is easy to understand, modify, and extend, 
+ultimately leading to improved software quality and adaptability. 
+By adhering to these principles, developers can create a well-structured codebase 
+that is less prone to bugs and easier to refactor. 
+These principles also make it easier for many people to collaborate on a project, simplify the process of extending, 
+modifying, testing, and refactoring the code, and ultimately lead to improved software quality and adaptability.
+
+Some key design principles include:
+
+1. SOLID Principles: 
+A set of five object-oriented design principles that focus on creating maintainable and scalable code. 
+These principles include the Single-Responsibility Principle (SRP), Open-Closed Principle (OCP), 
+Liskov Substitution Principle (LSP), Interface Segregation Principle (ISP), 
+and Dependency Inversion Principle (DIP).
+
+2. DRY (Don't Repeat Yourself): 
+A principle that emphasizes avoiding code duplication to reduce maintenance complexity 
+and potential inconsistencies.
+
+3. KISS (Keep It Simple, Stupid): 
+A principle that encourages simplicity in code and design, avoiding unnecessary complexity.
+
+4. YAGNI (You Aren't Gonna Need It): 
+A principle that advises developers to focus on delivering the features that are currently needed, 
+rather than over-engineering or anticipating future requirements.
+
+5. Composition Over Inheritance: 
+A design principle that encourages the use of composition (combining simple objects to create more complex ones) 
+instead of inheritance.
+
+6. Law of Demeter (Principle of Least Knowledge): 
+A principle that promotes reducing coupling between components by limiting the knowledge an object has about 
+other objects in its own domain.
+
