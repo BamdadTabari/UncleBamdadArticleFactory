@@ -1,0 +1,4 @@
+
+1-os module in python?
+2-sys module in python?
+3- 1+2 => difference of os and sys in python?
