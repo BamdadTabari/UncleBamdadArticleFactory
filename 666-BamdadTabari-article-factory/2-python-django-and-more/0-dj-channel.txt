@@ -1,0 +1,31 @@
+
+Django Channels?
+
+Django Channels is a project that extends Django's capabilities 
+beyond traditional HTTP to handle WebSockets, chat protocols, IoT protocols, and more.
+It builds upon the native ASGI support in Django, 
+allowing you to handle other connections in either a synchronous or asynchronous style.
+
+### Key Components of Django Channels:
+1. Channels: The Django integration layer.
+2. Daphne: The HTTP and WebSocket termination server.
+3. asgiref: ASGI base libraries for sync-to-async and async-to-sync function wrappers.
+4. channels_redis: Optional package providing a Redis channel layer backend.
+
+### Features and Functionality:
+- Channels preserve Django's synchronous behavior while adding support for asynchronous protocols like WebSockets, 
+MQTT, and more.
+
+- It allows applications to support long-running connections by replacing Django's default WSGI with ASGI.
+
+- Django Channels enables the development of real-time applications such as chat apps with features 
+like message/chat room persistency and private messaging.
+
+### Getting Started with Django Channels:
+To integrate Django Channels into your project:
+1. Install the channels package using pip.
+2. Add 'channels' to INSTALLED_APPS in your settings.py file.
+3. Configure the ASGI application in core/asgi.py using ProtocolTypeRouter.
+
+Django Channels offers a powerful way to build real-time applications on top of Django, 
+providing developers with the flexibility to handle various types of connections beyond traditional HTTP.
