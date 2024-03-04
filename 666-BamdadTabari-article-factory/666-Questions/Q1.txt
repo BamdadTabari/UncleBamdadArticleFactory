@@ -5,7 +5,17 @@
 4- typing module in python?
 5- async and await in python?
 6- what is Union type?
-******* 7- python built-in functions like "all" or "isinstance"? Write them all!! with sample!!
+******* 7- python built-in functions like "all" or "isinstance"? Write them all!! 
+with sample!!******** => this is good article
+
+8-examples of algorithms that can be implemented in django
+9- how to optimize django code for algorithm design
+10 - resources for learning algorithm design in django
+
+******** 11- an article about algorithms, architecture and Designs django?
+******** => this is good article
+
+
 
 66666666- VIN(Very Important Note): 
 Write All Of These shits sample code + docs to the handsOnPythonLearning Project
