@@ -1,3 +1,14 @@
 
 ###Prometheus
 
+In Django, Prometheus is a monitoring tool that allows developers to expose monitoring metrics relevant to Django internals for tracking and analysis using Prometheus.io. Here are some key points extracted from the search results:
+
+- django-prometheus Library: The django-prometheus library contains code to expose monitoring metrics specific to Django internals, enabling them to be monitored by Prometheus.io. This library includes Django middlewares that facilitate monitoring applications with Prometheus.io.
+
+- Custom Metrics: With Prometheus, developers can create custom metric-based monitoring systems for Django applications. This tool provides the flexibility to define and track custom metrics tailored to the specific needs of the application, allowing for detailed monitoring and analysis.
+
+- Integration with Django: To integrate Prometheus with Django, developers can use the django-prometheus library, which enables the export of Django monitoring metrics for Prometheus.io. By adding application-level metrics in the code using prometheus_client directly, developers can enhance monitoring capabilities within their Django projects.
+
+- Deployment with Kubernetes: When deploying Prometheus with Django in a Kubernetes environment, developers need to ensure that the Django app metrics are available on the Prometheus dashboard. This involves configuring ports on the service and deployment from 8000 to 8005 according to the number of workers. Proper setup ensures that the deployed Django app metrics are visible alongside other monitored resources on the Prometheus dashboard.
+
+In summary, Prometheus in Django offers a powerful solution for monitoring and analyzing application metrics, providing insights into various aspects of Django internals for effective performance tracking and optimization.
