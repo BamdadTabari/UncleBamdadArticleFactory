@@ -15,7 +15,7 @@ with sample!!******** => this is good article
 ******** 11- an article about algorithms, architecture and Designs django?
 ******** => this is good article
 
-
+12- logging in django . how to install django-prometheus library and more
 
 66666666- VIN(Very Important Note): 
 Write All Of These shits sample code + docs to the handsOnPythonLearning Project
