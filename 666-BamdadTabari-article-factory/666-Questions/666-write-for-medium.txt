@@ -1,0 +1,2 @@
+1- python: decorator and custom decorator
+2- get deeper in threads in python
