@@ -1,0 +1,802 @@
+C# Questions
+
+The difference between continue / break?
+
+In C#, the `break` statement is used to terminate the current loop iteration or terminate a switch statement, while the `continue` statement skips the execution of the current iteration only and moves to the next iteration within a loop. Here's a brief comparison:
+
+- Break:
+  - Terminates the loop or switch statement.
+  - Used to exit a loop prematurely.
+  - Example: 
+    #csharp
+    for (int i = 0; i < 10; i++) {
+        if (i == 4) 
+            break;
+        Console.WriteLine(i);
+    }
+
+- Continue:
+  - Skips the current iteration and moves to the next one.
+  - Allows the loop to continue without executing further code in the current iteration.
+  - Example:
+    #csharp
+    for (int i = 0; i < 10; i++) {
+        if (i == 4) 
+            continue;
+        Console.WriteLine(i);
+    }
+--------------------------------------------------
+The difference between string / stringBuilder?
+
+In C#, a `string` is immutable, meaning it cannot be changed once created, while `StringBuilder` is mutable, allowing modifications without creating new objects each time. Here's a brief comparison:
+
+- **String**:
+  - Immutable type.
+  - Creates a new object when modified.
+  - Suitable for fewer modifications.
+  - Example:
+    ```csharp
+    string greeting = "Hello World!";
+    greeting += " from C#"; // creates a new string object
+    ```
+
+- **StringBuilder**:
+  - Mutable type.
+  - Modifiable without creating new objects.
+  - Faster for multiple modifications.
+  - Example:
+        StringBuilder sb = new StringBuilder("Hello World!");
+    sb.Append(" from C#"); // appends to the same object
+  --------------------------------------------------
+The difference between Const / Readonly?
+
+In C#, `const` is a compile-time constant, meaning its value is set at compile time and cannot be changed, while `readonly` is a runtime constant that can be assigned a value either at declaration or in a constructor and cannot be modified after initialization. Here's a brief comparison:
+
+- **Const**:
+  - Compile-time constant.
+  - Value must be known at compile time.
+  - Implicitly static and limited to basic types.
+  - Example:
+    ```csharp
+    const int MaxValue = 100;
+    ```
+
+- **Readonly**:
+  - Runtime constant.
+  - Value can be assigned at runtime or in a constructor.
+  - Can be instance, static, or reference types.
+  - Example:
+    ```csharp
+    readonly int MaxConnections;
+    public MyClass(int max) {
+        MaxConnections = max;
+    }
+    ```
+--------------------------------------------------
+what is the abstraction in c#?
+Abstraction in C# refers to the process of hiding certain details and showing only essential information to the user. It can be achieved using abstract classes or interfaces. Abstract classes cannot be instantiated and must be inherited from, while abstract methods do not have a body and are implemented by derived classes. Abstraction helps in simplifying the complexity of objects by focusing on essential characteristics and behaviors, allowing users to interact with objects without needing to understand their internal workings.
+--------------------------------------------------
+The difference between Abstrac Class / Interface?
+
+In C#, an abstract class achieves partial abstraction while an interface achieves full abstraction. Here's a concise comparison:
+Abstract Class:
+Achieves partial abstraction (0 to 100%).
+Can have implemented and abstract methods.
+Can contain member variables.
+Used for defining a base class for concrete subclasses to inherit from.
+Interface:
+Achieves full abstraction (100%).
+Can only have abstract methods.
+Cannot have member variables.
+Used to define a set of methods that a class must implement.
+Abstract classes can have constructors, member variables, and provide method implementations, while interfaces cannot have these features. Additionally, a class can inherit from only one abstract class but can implement multiple interfaces
+--------------------------------------------------
+The difference between var / dynamic?
+The main difference between `var` and `dynamic` in C# is that `var` is a statically typed variable where the data type is inferred at compile time based on the value it's initialized with, while `dynamic` is a dynamically typed variable where the type is inferred at runtime, not compile time. Here's a sample code illustrating the difference:
+
+- **Var**:
+  ```csharp
+  var number = 10; // Compiler infers 'number' as an int
+  var name = "John"; // Compiler infers 'name' as a string
+  ```
+
+- **Dynamic**:
+  ```csharp
+  dynamic data = 10; // Type of 'data' determined at runtime
+  data = "Jane"; // 'data' can now hold a string value
+  ```
+
+In the `var` example, the compiler determines the type of the variable at compile time, while in the `dynamic` example, the type is resolved at runtime.
+--------------------------------------------------
+What is a delegate in C# and how is it different from an event?
+a delegate in C# is like a person you appoint to do a specific job. You define what the job is (method signature) and then assign someone (delegate) to do that job. It's a way to call methods indirectly through a reference.
+An event, on the other hand, is like a notification system. Imagine you have a bell (event) that rings when something happens. You can have multiple listeners (event handlers) waiting for the bell to ring, and when it does, they respond accordingly.
+Delegates are like the messengers that carry out specific tasks, while events are the triggers that notify others when something happens. Events use delegates behind the scenes to manage who should be notified when an event occurs.
+--------------------------------------------------
+What is the difference between a value type and a reference type in C#?
+
+### Difference Between Value Type and Reference Type in C#
+
+In C#, data types are categorized into two main groups: Value Types and Reference Types, each with distinct characteristics in terms of memory storage and behavior.
+
+#### Value Types
+- **Storage**: Stored in the Stack memory.
+- **Behavior**:
+  - Each variable holds its own copy of the data directly.
+  - Changes made to one variable do not affect others.
+- **Examples**: int, bool, float, struct, etc.
+
+#### Reference Types
+- **Storage**: Stored in the Heap memory.
+- **Behavior**:
+  - Variables store references to the actual data's location.
+  - When assigned to another variable, both refer to the same memory location.
+  - Changes made through one variable affect others.
+- **Examples**: Classes, Interfaces, Delegates, Arrays.
+
+#### Key Differences
+- **Value Types** hold actual data, while **Reference Types** hold references to data locations in memory.
+- Value types are more memory-efficient and performant but lack flexibility compared to reference types.
+- Reference types offer more functionality but can lead to unintended side effects if not handled carefully.
+
+Understanding these differences is crucial for efficient memory usage and proper handling of data structures and method parameters in C# programming.
+-----------------------------------------------------------
+What is the purpose of the "using" statement in C#?
+
+### Purpose of the "using" Statement in C#
+
+The `using` statement in C# serves a crucial purpose in managing resources that implement the `IDisposable` interface. Its primary function is to ensure proper disposal of resources that hold unmanaged resources, such as file handles or network connections, after they are no longer needed. By using the `using` statement, developers can guarantee that these resources are released efficiently and promptly, preventing memory leaks and enhancing application performance[1][3][4].
+
+#### How the "using" Statement Works
+- When an object is created within a `using` block, the `Dispose` method of that object is automatically called when the block is exited.
+- This automatic disposal mechanism simplifies resource management and eliminates the need for manual calls to the `Dispose` method.
+- The `using` statement enhances code readability and ensures that resources are properly cleaned up even if exceptions occur within the block.
+
+#### Example:
+```csharp
+using (StreamReader reader = new StreamReader("example.txt"))
+{
+    string content = reader.ReadToEnd();
+    Console.WriteLine(content);
+}
+```
+
+In this example, the `StreamReader` object is disposed of automatically when it goes out of scope at the end of the `using` block. This feature makes resource management more efficient and helps prevent resource leaks in C# applications.
+
+By leveraging the `using` statement, developers can maintain clean and robust resource handling practices, contributing to the overall reliability and performance of their C# applications.
+--------------------------------------------------
+What is the difference between "IEnumerable" and "IEnumerator" in C#?
+
+### Difference Between IEnumerable and IEnumerator in C#
+
+In C#, `IEnumerable` and `IEnumerator` are interfaces used for iterating over collections, but they serve different purposes:
+
+- **IEnumerable**:
+  - Represents a collection that can be enumerated.
+  - Contains a single method, `GetEnumerator()`, which returns an `IEnumerator`.
+  - Used to enable the `foreach` loop to iterate over a collection.
+  - Provides a higher-level way to iterate over a collection.
+
+- **IEnumerator**:
+  - Provides a way to iterate through a collection sequentially.
+  - Contains methods like `MoveNext()` to advance the enumerator to the next element and `Current` to retrieve the current element.
+  - Used for low-level iteration over a collection.
+
+#### Sample Code:
+```csharp
+// IEnumerable example
+List<string> months = new List<string> { "January", "February", "March" };
+IEnumerable<string> iEnumerableMonths = months;
+
+foreach (string month in iEnumerableMonths)
+{
+    Console.WriteLine(month);
+}
+
+// IEnumerator example
+IEnumerator<string> enumerator = months.GetEnumerator();
+while (enumerator.MoveNext())
+{
+    Console.WriteLine(enumerator.Current);
+}
+```
+
+In this code snippet, `IEnumerable` is used with a `foreach` loop for high-level iteration, while `IEnumerator` is manually advanced using `MoveNext()` and accessed with `Current` for low-level iteration control.
+--------------------------------------------------
+what is the "enumerator.MoveNext()" return type?
+
+The MoveNext() method in C# returns a boolean value. It returns true if the enumerator was successfully advanced to the next element, and false if the enumerator has passed the end of the collection
+--------------------------------------------------
+What is the difference between a "try-catch" block and a "try-finally" block in C#?
+
+### Difference Between "try-catch" and "try-finally" Blocks in C#
+
+In C#, both `try-catch` and `try-finally` blocks are essential for exception handling, but they serve different purposes:
+
+- **Try-Catch Block**:
+  - Used to handle exceptions that may occur within the `try` block.
+  - The `catch` block is executed if an exception is thrown, allowing specific handling of different types of exceptions.
+  - Helps prevent the application from crashing by providing a mechanism to recover from errors.
+
+- **Try-Finally Block**:
+  - Used for cleanup operations that must be executed regardless of whether an exception occurs.
+  - The `finally` block is always executed, even if an exception is thrown or not, ensuring resources are properly released.
+  - Typically used for releasing resources like closing files or database connections.
+
+#### Sample Code:
+```csharp
+// Try-Catch Block
+try
+{
+    // Code that may raise an exception
+    int result = 100 / 0; // This will throw a DivideByZeroException
+}
+catch (DivideByZeroException ex)
+{
+    Console.WriteLine("Exception caught: " + ex.Message);
+}
+
+// Try-Finally Block
+try
+{
+    // Code that may raise an exception
+    int[] numbers = new int[3];
+    numbers[4] = 10; // This will throw an IndexOutOfRangeException
+}
+finally
+{
+    Console.WriteLine("Finally block always executes, regardless of exceptions.");
+}
+```
+
+In the sample code above, the `try-catch` block handles a specific exception, while the `try-finally` block ensures that the finally block is executed even if an exception occurs within the try block.
+--------------------------------------------------
+What is the purpose of the "async" and "await" keywords in C#?
+
+Purpose of "async" and "await" Keywords in C#
+In C#, the async and await keywords play a crucial role in asynchronous programming, enabling developers to create responsive and scalable applications by handling multiple tasks simultaneously. Here is a breakdown of their purpose:
+Async Keyword:
+Marks a method as asynchronous, allowing it to run in the background while other code executes.
+Indicates that the method can perform non-blocking operations and return a Task or Task<TResult> object.
+Simplifies writing non-blocking code, making it easier to read and maintain.
+Await Keyword:
+Used within an async method to temporarily suspend its execution and yield control back to the calling method until the awaited task completes.
+Ensures that the application remains responsive by allowing other tasks to continue executing in the meantime.
+Unwraps the result of the Task<TResult> object, enabling direct work with the result.
+By utilizing async and await, developers can offload time-consuming operations like fetching data or processing files to separate threads, keeping the main thread responsive for user interactions. These keywords streamline asynchronous programming, making it more accessible and efficient for handling complex workflows in modern applications
+--------------------------------------------------
+what is the "yield" keyword in C#?
+The `yield` keyword in C# is used to create iterator blocks, allowing the method to return an iterator object that can be used to loop through a collection of items. It enables the method to yield each item in the collection sequentially, improving efficiency by avoiding the need to build up a full collection internally before iterating over it. Here is an example demonstrating the use of `yield`:
+
+```csharp
+// Iterator version, efficient (No intermediate collection is built)
+// Yields items one at a time as the caller's foreach loop requests them
+IEnumerable<object> IterateOverItems()
+{
+    for (int i = 0; i < database.Customers.Count(); ++i)
+    {
+        yield return database.Customers[i];
+    }
+}
+
+// Caller code sample:
+int num = 0;
+foreach (var itm in IterateOverItems())
+{
+    num++;
+    if (num == 5)
+        break;
+    // Note: Only 5 items were yielded and used out of the million.
+}
+```
+
+In this example, the `IterateOverItems` method uses `yield` to yield items one at a time as requested by the caller's `foreach` loop, avoiding the need to build an intermediate collection of all items before iterating over them.
+--------------------------------------------------
+What is the difference between a static class and a singleton class in C#?
+
+### Difference Between Static Class and Singleton Class in C#
+
+In C#, both static classes and singleton classes serve distinct purposes and have different characteristics:
+
+- **Static Class**:
+  - Cannot be instantiated and is automatically loaded by the .NET Framework Common Language Runtime (CLR).
+  - Contains only static members (methods, properties) and is used for utility or helper functions.
+  - Does not support inheritance or interface implementation.
+  - Provides better performance as static methods are bound at compile time.
+
+- **Singleton Class**:
+  - Ensures that only one instance of the class is created throughout the application's lifecycle.
+  - Typically implemented using a private constructor and a static instance property.
+  - Allows inheritance, interface implementation, and lazy loading of the instance.
+  - Can be passed as an argument to methods and supports serialization.
+
+#### Key Differences:
+- **Inheritance**: Static classes cannot be inherited, while singleton classes can be extended through inheritance.
+- **Interface Implementation**: Singleton classes can implement interfaces, unlike static classes.
+- **Instance Handling**: Singleton classes allow creating one instance that can be shared across multiple variables, unlike static classes that cannot be assigned to other variables.
+- **Serialization**: Singleton classes can be serialized, providing more flexibility compared to static classes.
+
+Understanding the differences between static and singleton classes is essential for choosing the appropriate design pattern based on the specific requirements of the application.
+--------------------------------------------------
+All class types in c# and their purpose?
+
+In C#, there are various types of classes that serve different purposes:
+
+- **Static Class**:
+  - Contains only static members and cannot be instantiated.
+  - Used for utility or helper functions where instances are not required.
+  - Provides a collection of static methods for common functionalities.
+
+- **Abstract Class**:
+  - Provides a common definition to subclasses but cannot be instantiated itself.
+  - Allows defining abstract methods that must be implemented by derived classes.
+  - Used for creating a base class with common functionality shared by multiple derived classes.
+
+- **Partial Class**:
+  - Allows dividing the properties, methods, and events of a class into multiple source files.
+  - At compile time, these files are combined into a single class definition.
+  - Useful for organizing large classes or separating auto-generated code from custom code.
+
+- **Sealed Class**:
+  - Prevents the class from being inherited, restricting the properties and methods it contains.
+  - Used when a class is designed to be standalone and not meant for extension.
+  - Ensures that the class cannot be further specialized through inheritance.
+
+- **Singleton Class**:
+  - Ensures that only one instance of the class is created throughout the application's lifecycle.
+  - Typically implemented using a private constructor and a static instance property.
+  - Allows global access to a single instance of the class.
+
+Understanding these different types of classes in C# helps developers choose the appropriate design pattern based on the specific requirements of their applications.
+--------------------------------------------------
+What is the purpose of the "out" keyword in C#?
+The `out` keyword in C# is used to pass arguments to methods by reference, allowing the method to modify the value of the argument and have those changes reflected outside the method. Unlike the `ref` keyword, `out` parameters do not require the variables to be initialized before they are passed to a method. The `out` keyword must be explicitly declared in both the method's definition and the calling method. It is commonly used when a method needs to return multiple values without using an explicit return statement. Here is an example demonstrating the usage of the `out` parameter:
+
+```csharp
+using System;
+
+class Example
+{
+    public static void Multiply(int x, int y, out int result)
+    {
+        result = x * y;
+    }
+
+    static void Main()
+    {
+        int x = 5;
+        int y = 10;
+        int product;
+
+        Multiply(x, y, out product);
+
+        Console.WriteLine("Product: {0}", product);
+    }
+}
+```
+
+In this example, the `Multiply` method takes two integers as input and calculates their product, which is then assigned to the `result` variable using the `out` keyword. The value of `product` is modified inside the method and can be accessed outside of it, demonstrating how `out` parameters work in C#
+--------------------------------------------------
+What is the purpose of the "ref" keyword in C#?
+### Purpose of the "ref" Keyword in C#
+
+In C#, the `ref` keyword is used to pass arguments to methods by reference, allowing the method to modify the value of the argument directly. This means any changes made to the parameter inside the method are reflected outside the method as well. The `ref` keyword is particularly useful when a method needs to modify the value of a variable passed as an argument. Here is an example demonstrating the usage of the `ref` keyword:
+
+```csharp
+using System;
+
+class Example
+{
+    public static void Increment(ref int number)
+    {
+        number++;
+    }
+
+    static void Main()
+    {
+        int num = 5;
+        
+        Increment(ref num);
+
+        Console.WriteLine("Number after increment: {0}", num);
+    }
+}
+```
+
+In this example, the `Increment` method takes an integer as a `ref` parameter, allowing it to directly modify the value of the `number` variable passed to it. The changes made inside the method are reflected in the `num` variable outside of it, showcasing how the `ref` keyword works in C#.
+--------------------------------------------------
+what is the difference between "ref" and "out" in c#?
+
+### Difference Between "ref" and "out" in C#
+
+The `ref` and `out` keywords in C# are used to pass arguments to methods by reference, allowing the method to modify the value of the argument directly. Here are the key differences between `ref` and `out`:
+
+- **Initialization**:
+  - With `ref`, the variable must be initialized before it is passed into the method.
+  - With `out`, the variable does not need to be initialized before being passed into the method.
+sample code:
+using System;
+
+class Example
+{
+    static void Main()
+    {
+        int x = 10;
+        int y = 20;
+
+        Console.WriteLine("Before Increment:");
+        Console.WriteLine("x = {0}, y = {1}", x, y);
+
+        Increment(ref x, ref y);
+
+        Console.WriteLine("After Increment:");
+        Console.WriteLine("x = {0}, y = {1}", x, y);
+    }
+
+    static void Increment(ref int x, ref int y)
+    {
+        x++;
+        y++;
+    }
+}
+
+- **Assignment**:
+  - With `ref`, it is necessary to assign a value to the parameter before returning it to the calling method.
+  - With `out`, initializing the parameter inside the method is required before returning it.
+sample code:
+using System;
+
+class Example
+{
+    static void Main()
+    {
+        int x = 10;
+        int y = 20;
+
+        Console.WriteLine("Before Increment:");
+        Console.WriteLine("x = {0}, y = {1}", x, y);
+
+        Increment(ref x, ref y);
+
+        Console.WriteLine("After Increment:");
+        Console.WriteLine("x = {0}, y = {1}", x, y);
+    }
+
+    static void Increment(ref int x, ref int y)
+    {
+        x += 10;
+        y += 20;
+    }
+}
+
+- **Bi-directional Passing**:
+  - `ref` allows data to be passed in a bi-directional way, meaning changes can be made both ways.
+  - `out` only allows data to be passed from the called method to the calling method.
+sample code:
+using System;
+
+class Example
+{
+    static void Main()
+    {
+        int x = 10;
+        int y = 20;
+
+        Console.WriteLine("Before Increment:");
+        Console.WriteLine("x = {0}, y = {1}", x, y);
+
+        Increment(ref x, ref y);
+
+        Console.WriteLine("After Increment:");
+        Console.WriteLine("x = {0}, y = {1}", x, y);
+    }
+
+    static void Increment(ref int x, ref int y)
+    {
+        x = 20;
+        y = 30;
+    }
+}
+
+- **Usage**:
+  - `ref` is useful when a method needs to modify the passed parameter as well.
+  - `out` is beneficial when a method needs to return several values without initializing them beforehand.
+sample code:
+using System;
+
+class Example
+{
+    static void Main()
+    {
+        int x = 10;
+        int y = 20;
+
+        Console.WriteLine("Before Increment:");
+        Console.WriteLine("x = {0}, y = {1}", x, y);
+
+        Increment(ref x, ref y, out int result1, out int result2);
+
+        Console.WriteLine("After Increment:");
+        Console.WriteLine("x = {0}, y = {1}, result1 = {2}, result2 = {3}", x, y, result1, result2);
+    }
+
+    static void Increment(ref int x, ref int y, out int result1, out int result2)
+    {
+        x += 10;
+        y += 20;
+
+        result1 = x;
+        result2 = y;
+    }
+}
+
+There is no clear advantage of using `ref` over `out`, or vice versa. The choice between them depends on the specific requirements of the code. In general, use `ref` when you need to pass a variable into a method and modify it inside, while use `out` when you need to return multiple values from a method without initializing them beforehand.
+--------------------------------------------------
+
+What is the difference between "internal" and "private" access modifiers in C#?
+
+The `internal` and `private` access modifiers in C# are used to control the visibility of class members. Here are the main differences between them:
+
+- **Internal Access Modifier**:
+  - The `internal` access modifier is used to restrict the access of a class or its members to the assembly in which it is defined.
+  - This means that only classes within the same assembly can access the `internal` members of a class.
+  - The `internal` keyword is typically used for classes that are intended to be used only by the assembly in which they are defined.
+
+- **Private Access Modifier**:
+  - The `private` access modifier is used to restrict the access of a class or its members to the class itself.
+  - This means that only the class itself can access the `private` members of the class.
+  - The `private` keyword is typically used for class members that are not intended to be accessed from outside the class.
+
+Here is an example demonstrating the use of `internal` and `private` access modifiers in C#:
+
+```csharp
+// Example of Internal Access Modifier
+internal class InternalExample
+{
+    internal int InternalMember;
+}
+
+// Example of Private Access Modifier
+class PrivateExample
+{
+    private int PrivateMember;
+}
+```
+
+In the above example, the `InternalExample` class has an `internal` member `InternalMember`, which can only be accessed by classes within the same assembly. The `PrivateExample` class has a `private` member `PrivateMember`, which can only be accessed by the class itself.
+
+By using `internal` and `private` access modifiers, you can control the visibility of your class members and restrict their access to specific parts of your application.
+--------------------------------------------------
+What is the difference between "abstract" and "virtual" methods in C#?
+
+### Difference Between "abstract" and "virtual" Methods in C#
+
+In C#, both `abstract` and `virtual` methods serve distinct purposes in object-oriented programming. Here are the key differences between them:
+
+- **Abstract Methods**:
+  - Abstract methods are declared in an abstract class and do not have an implementation; they only provide method signatures.
+  - Subclasses inheriting from an abstract class must override abstract methods, providing their own implementation.
+  - Abstract methods enforce method overriding in derived classes at compile time.
+
+- **Virtual Methods**:
+  - Virtual methods have both signatures and implementations provided in a class.
+  - Inheritance allows subclasses to execute virtual methods without the need for new implementations.
+  - Subclasses can choose to override virtual methods from their base class, providing custom implementations if necessary.
+
+#### Sample Code for Abstract Method:
+```csharp
+public abstract class Shape
+{
+    public abstract double CalculateArea();
+}
+
+public class Circle : Shape
+{
+    private double radius;
+
+    public Circle(double r)
+    {
+        radius = r;
+    }
+
+    public override double CalculateArea()
+    {
+        return Math.PI * radius * radius;
+    }
+}
+```
+
+#### Sample Code for Virtual Method:
+```csharp
+public class Animal
+{
+    public virtual void MakeSound()
+    {
+        Console.WriteLine("Animal makes a sound");
+    }
+}
+
+public class Dog : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+```
+
+In the provided code snippets, the `Shape` class contains an abstract method `CalculateArea()` that must be implemented by any subclass. On the other hand, the `Animal` class has a virtual method `MakeSound()` that can be overridden by subclasses like `Dog` to provide specific behavior.
+
+These examples illustrate how abstract methods enforce method overriding in derived classes, while virtual methods allow for optional overriding with default implementations.
+--------------------------------------------------
+What is the difference between "File" and "FileInfo" classes in C#?
+
+### Difference Between "File" and "FileInfo" Classes in C#
+
+In C#, the `File` and `FileInfo` classes are both used for file manipulation, but they have some key differences:
+
+- **File Class**:
+  - The `File` class is a static class, meaning all its methods are called directly on the class itself.
+  - It provides static methods for creating, deleting, moving, and appending text to files.
+  - Methods in the `File` class are static and do not require an instance of the class to be created.
+
+- **FileInfo Class**:
+  - The `FileInfo` class is a non-static class, requiring an instance of the class to use its methods.
+  - It provides more control over read/write operations on files and allows for operations like encryption, decryption, and access control.
+  - The `FileInfo` class is more object-oriented and provides instance methods for file manipulation.
+
+#### Sample Code Using File Class:
+```csharp
+using System.IO;
+
+// Create a file using the File class
+FileStream fileCreatedUsingFileClass = File.Create("myFile.txt");
+```
+
+#### Sample Code Using FileInfo Class:
+```csharp
+using System.IO;
+
+// Create a file using the FileInfo class
+FileInfo fileInfo = new FileInfo("myFile.txt");
+FileStream fileCreatedUsingFileInfoClass = fileInfo.Create();
+```
+
+In the provided code snippets, the `File` class is used to create a file directly with static methods, while the `FileInfo` class requires an instance to create a file. The choice between `File` and `FileInfo` depends on whether you need static methods for simple file operations or more control and object-oriented features for file manipulation.
+--------------------------------------------------
+What is the difference between "DateTime" and "DateTimeOffset" in C#?
+
+### Difference Between "DateTime" and "DateTimeOffset" in C#
+
+In C#, both `DateTime` and `DateTimeOffset` are used to represent date and time values, but they have distinct differences:
+
+- **DateTime**:
+  - The `DateTime` struct represents a specific point in time without any time zone information.
+  - It does not store information about the time zone or offset from Coordinated Universal Time (UTC).
+  - `DateTime` is suitable for scenarios where time zone information is not critical, like working with legacy systems or time-insensitive events.
+
+- **DateTimeOffset**:
+  - The `DateTimeOffset` struct represents a specific point in time along with an offset that shows how much it varies from UTC.
+  - It includes both date and time components as well as an offset component indicating the difference from UTC.
+  - `DateTimeOffset` is preferred for scenarios requiring accurate information about when an event occurred, especially in distributed systems accessed from different time zones.
+
+When to Use Each:
+- Use `DateTime` when working with legacy systems or events that do not require time zone information.
+- Use `DateTimeOffset` when precise information about the occurrence of events is needed, especially in distributed systems accessed from various time zones.
+
+These differences highlight the importance of choosing the appropriate type based on the specific requirements of your application.
+--------------------------------------------------
+What is a lambda expression in C# and how is it used?
+--------------------------------------------------
+What is the difference between "IEnumerable" and "IQueryable" in C#?
+--------------------------------------------------
+What is the purpose of the "yield" keyword in C#?
+--------------------------------------------------
+What is a constructor in C# and how is it different from a method?
+--------------------------------------------------
+What is the difference between "sealed" and "static" classes in C#?
+
+What is the difference between "private" and "protected" access modifiers in C#?
+
+What is the purpose of the "interface" keyword in C#?
+
+What is the purpose of the "override" keyword in C#?
+
+What is the difference between "First()" and "FirstOrDefault()" methods in LINQ?
+
+What is the purpose of the "async/await" pattern in C#?
+
+What is the difference between "List" and "Array" in C#?
+
+What is the difference between "HashTable" and "Dictionary" in C#?
+
+What is the purpose of the "using" directive in C#?
+
+
+Entity Framework Questions
+
+What is Entity Framework Core and how does it differ from previous versions of Entity Framework?
+
+What are the different approaches for creating models in Entity Framework Core?
+
+What is a DbContext in Entity Framework Core and what is its role?
+
+What are the different types of relationships that can be defined between entities in Entity Framework Core?
+
+What is lazy loading and eager loading in Entity Framework Core?
+
+What is the difference between "Add", "Attach", and "Update" methods in Entity Framework Core?
+
+What is the purpose of "Include" and "ThenInclude" methods in Entity Framework Core?
+
+What is the purpose of "AsNoTracking" method in Entity Framework Core?
+
+What is the purpose of "FromSqlRaw" and "FromSqlInterpolated" methods in Entity Framework Core?
+
+What is the purpose of "Query Types" in Entity Framework Core?
+
+What is database migration in Entity Framework Core and how is it used?
+
+What is the purpose of "Seeding" data in Entity Framework Core?
+
+What are the different types of inheritance in Entity Framework Core?
+
+What is the purpose of "Owned Types" in Entity Framework Core?
+
+What is the difference between "SingleOrDefault" and "FirstOrDefault" in Entity Framework Core?
+
+What is the purpose of "AsSplitQuery" in Entity Framework Core?
+
+What is the purpose of "Configuration Providers" in Entity Framework Core?
+
+What is the purpose of "Value Conversions" in Entity Framework Core?
+
+What is the purpose of "Entity States" in Entity Framework Core and what are the different states?
+
+How do you optimize Entity Framework Core queries for performance?
+
+
+
+
+
+LINQ Questions
+
+What is LINQ and how is it used in C#?
+
+What are the different types of LINQ queries in C#?
+
+What is deferred execution in LINQ and how does it work?
+
+What is the difference between "Where" and "Select" in LINQ?
+
+What is the difference between "FirstOrDefault" and "SingleOrDefault" in LINQ?
+
+What is the difference between "Count" and "LongCount" in LINQ?
+
+What is the purpose of "OrderBy" and "ThenBy" in LINQ?
+
+What is the purpose of "GroupBy" in LINQ?
+
+What is the difference between "Join" and "GroupJoin" in LINQ?
+
+What is the purpose of "Take" and "Skip" in LINQ?
+
+What is the difference between "Any" and "All" in LINQ?
+
+What is the purpose of "Distinct" in LINQ?
+
+What is the purpose of "Aggregate" in LINQ?
+
+What is the purpose of "Sum", "Max", and "Min" in LINQ?
+
+What is the purpose of "Zip" in LINQ?
+
+What is the purpose of "Cast" and "OfType" in LINQ?
+
+What is the purpose of "ToDictionary" and "ToLookup" in LINQ?
+
+What is the difference between "SingleOrDefault" and "FirstOrDefault" in LINQ?
+
+What is the purpose of "AsEnumerable" and "AsQueryable" in LINQ?
+
+What is the purpose of "TakeWhile" and "SkipWhile" in LINQ?
