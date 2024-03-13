@@ -1,89 +1,174 @@
-
-
-Entity Framework Questions
+C# VIP Questions {Part 2}
+----------------------------------------------------------------
+### Entity Framework and LINQ Questions
+----------------------------------------------------------------
+###Entity Framework Questions
+----------------------------------------------------------------
 
 What is Entity Framework Core and how does it differ from previous versions of Entity Framework?
 
+Entity Framework Core (EF Core) is a lightweight, extensible, open-source version of Entity Framework (EF) 
+that was initially released as Entity Framework 7. 
+It is designed to be more efficient, powerful, flexible, and extensible than previous versions of EF. 
+EF Core is a complete rewrite of the original Entity Framework and is licensed under Apache License v2. 
+It is designed to run on Windows, Linux, and macOS, and supports a new range of relational and NoSQL data stores.
+EF Core is part of the .NET Core framework, which is cross-platform and open source, 
+unlike the original Entity Framework, which was part of the .NET Framework, 
+a proprietary Windows-only platform. 
+EF Core is now in its sixth major version, EF Core 6.0, which was released on November 10, 2021.
+EF Core is designed to support many scenarios not covered by the legacy EF6 stack and 
+is generally much higher performing. 
+The EF Core team is planning a comprehensive porting guide for applications moving from 
+legacy EF6 to EF Core.
+
+----------------------------------------------------------------
+
 What are the different approaches for creating models in Entity Framework Core?
+----------------------------------------------------------------
 
 What is a DbContext in Entity Framework Core and what is its role?
 
+----------------------------------------------------------------
+
 What are the different types of relationships that can be defined between entities in Entity Framework Core?
+
+----------------------------------------------------------------
 
 What is lazy loading and eager loading in Entity Framework Core?
 
+----------------------------------------------------------------
+
 What is the difference between "Add", "Attach", and "Update" methods in Entity Framework Core?
+
+----------------------------------------------------------------
 
 What is the purpose of "Include" and "ThenInclude" methods in Entity Framework Core?
 
+----------------------------------------------------------------
+
 What is the purpose of "AsNoTracking" method in Entity Framework Core?
+
+----------------------------------------------------------------  
 
 What is the purpose of "FromSqlRaw" and "FromSqlInterpolated" methods in Entity Framework Core?
 
+----------------------------------------------------------------
+
 What is the purpose of "Query Types" in Entity Framework Core?
+
+----------------------------------------------------------------
 
 What is database migration in Entity Framework Core and how is it used?
 
+----------------------------------------------------------------
+
 What is the purpose of "Seeding" data in Entity Framework Core?
+
+----------------------------------------------------------------
 
 What are the different types of inheritance in Entity Framework Core?
 
+----------------------------------------------------------------
+
 What is the purpose of "Owned Types" in Entity Framework Core?
+
+----------------------------------------------------------------
 
 What is the difference between "SingleOrDefault" and "FirstOrDefault" in Entity Framework Core?
 
+----------------------------------------------------------------
+
 What is the purpose of "AsSplitQuery" in Entity Framework Core?
+
+----------------------------------------------------------------
 
 What is the purpose of "Configuration Providers" in Entity Framework Core?
 
+
+----------------------------------------------------------------
+
 What is the purpose of "Value Conversions" in Entity Framework Core?
+
+----------------------------------------------------------------
 
 What is the purpose of "Entity States" in Entity Framework Core and what are the different states?
 
+----------------------------------------------------------------
+
 How do you optimize Entity Framework Core queries for performance?
+
+
+----------------------------------------------------------------
 
 
 
 
 
 LINQ Questions
-
+----------------------------------------------------------------
 What is LINQ and how is it used in C#?
+----------------------------------------------------------------
 
 What are the different types of LINQ queries in C#?
+----------------------------------------------------------------
 
 What is deferred execution in LINQ and how does it work?
 
+----------------------------------------------------------------
+
 What is the difference between "Where" and "Select" in LINQ?
+
+----------------------------------------------------------------
 
 What is the difference between "FirstOrDefault" and "SingleOrDefault" in LINQ?
 
+----------------------------------------------------------------
+
 What is the difference between "Count" and "LongCount" in LINQ?
+
+----------------------------------------------------------------
 
 What is the purpose of "OrderBy" and "ThenBy" in LINQ?
 
+----------------------------------------------------------------
+
 What is the purpose of "GroupBy" in LINQ?
+
+----------------------------------------------------------------
 
 What is the difference between "Join" and "GroupJoin" in LINQ?
 
+----------------------------------------------------------------
+
+
 What is the purpose of "Take" and "Skip" in LINQ?
+
+----------------------------------------------------------------
 
 What is the difference between "Any" and "All" in LINQ?
 
+----------------------------------------------------------------
+
 What is the purpose of "Distinct" in LINQ?
+----------------------------------------------------------------
 
 What is the purpose of "Aggregate" in LINQ?
 
+----------------------------------------------------------------
 What is the purpose of "Sum", "Max", and "Min" in LINQ?
+
+----------------------------------------------------------------
 
 What is the purpose of "Zip" in LINQ?
 
+----------------------------------------------------------------
 What is the purpose of "Cast" and "OfType" in LINQ?
-
+----------------------------------------------------------------
 What is the purpose of "ToDictionary" and "ToLookup" in LINQ?
-
+----------------------------------------------------------------
 What is the difference between "SingleOrDefault" and "FirstOrDefault" in LINQ?
-
+----------------------------------------------------------------
 What is the purpose of "AsEnumerable" and "AsQueryable" in LINQ?
-
+----------------------------------------------------------------
 What is the purpose of "TakeWhile" and "SkipWhile" in LINQ?
+----------------------------------------------------------------
