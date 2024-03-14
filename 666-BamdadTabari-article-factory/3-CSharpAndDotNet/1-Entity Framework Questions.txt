@@ -24,37 +24,217 @@ legacy EF6 to EF Core.
 ----------------------------------------------------------------
 
 What are the different approaches for creating models in Entity Framework Core?
+
+### Different Approaches for Creating Models in Entity Framework Core:
+
+Entity Framework Core (EF Core) offers various approaches for creating models, each with its own advantages and use cases. 
+Here are the different methods:
+
+1. **Code First Approach**:
+   - Focuses on domain requirements and allows for Domain Driven Design (DDD).
+   - Provides flexibility and control over the code.
+   - Enables creating entities first and generating the database from them.
+   - Utilizes Plain Old CLR Objects (POCO) to define the model.
+   - Example: 
+     ```csharp
+     public class Product
+     {
+         public int ProductId { get; set; }
+         public string ProductName { get; set; }
+         public float Price { get; set; }
+     }
+     ```
+
+2. **Database First Approach**:
+   - Suitable when the database is already designed.
+   - Creates the Entity Data Model (EDM) from the existing database.
+   - Allows manual changes to the database and easy updates to the EDM.
+   
+3. **Model First Approach**:
+   - Involves creating the EDM first and then generating the database from it.
+   - Enables defining entities and relationships visually in tools like Visual Studio.
+   - Ideal when neither domain classes nor the database schema are ready.
+
+These approaches cater to different scenarios, offering developers flexibility in how they design and implement their models in EF Core.
+
 ----------------------------------------------------------------
 
 What is a DbContext in Entity Framework Core and what is its role?
+
+A DbContext in Entity Framework Core (EF Core) is a class that represents a session with the database. 
+It is designed to be used for a single unit-of-work, which means that it is typically created, used, and then disposed of within 
+the scope of a single operation. The lifetime of a DbContext instance begins when it is created and ends when it is disposed.
+The DbContext is not thread-safe and should not be shared between threads. It is also not designed to be inherited from, 
+but it can be extended by creating a derived context class that inherits from DbContext.
+To use a DbContext in your application, you need to create a class that derives from DbContext and define the entities you want to work with 
+as DbSet properties. 
+You can then use this context class to query and save instances of your entities to a database.
+
+Here is an example of a DbContext class:
+
+```csharp
+public class SchoolContext : DbContext
+{
+    public DbSet<Student> Students { get; set; }
+    public DbSet<Grade> Grades { get; set; }
+}
+```
+
+In this example, the SchoolContext class derives from DbContext and has two DbSet properties, Students and Grades, which represent the entities you want to work with.
+
+To configure the database connection and other options for your DbContext, you can override the OnConfiguring(DbContextOptionsBuilder) method in your context class. This method is called for each instance of the context that is created and allows you to configure the database and other options.
+
+For example:
+
+```csharp
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=SchoolDb;Trusted_Connection=True;");
+}
+```
+
+In this example, the OnConfiguring method is overridden to configure the database connection using the UseSqlServer extension method, which specifies a connection string to a SQL Server database.
+
+By following these steps, you can create a DbContext in Entity Framework Core and use it to query and save instances of your entities to a database.
+
 
 ----------------------------------------------------------------
 
 What are the different types of relationships that can be defined between entities in Entity Framework Core?
 
+In Entity Framework Core, there are three types of relationships that can be defined between entities:
+
+1. **One-to-One (1:1)**: This relationship exists when only one row of data in the principal table is associated with one row in the dependent table. One example of this relationship is between an Author and their Biography.
+
+2. **One-to-Many (1:N)**: This relationship occurs when one row in the principal table can be associated with multiple rows in the dependent table. For example, a Blog can have multiple Posts.
+
+3. **Many-to-Many (N:N)**: This relationship exists when multiple rows in both the principal and dependent tables can be associated with each other. An example of this relationship is between a Book and its Categories.
+
+Each of these relationships can be configured using various options such as required or optional relationships, foreign key properties, and navigation properties. The specific configuration depends on the requirements of your application and the database schema.
+
+
 ----------------------------------------------------------------
 
 What is lazy loading and eager loading in Entity Framework Core?
+
+
+Lazy loading and eager loading are two different approaches to loading related data in Entity Framework Core (EF Core).
+
+### Lazy Loading:
+
+Lazy loading is the default behavior in EF Core. It means that related data is loaded from the database only when it is accessed for the first time. This approach is useful when you don't need to access all related data immediately. For example, if you have a User entity and a UserDetails entity, and you want to load the UserDetails only when you access the UserDetails property of the User entity. In this case, you can configure lazy loading by setting the navigation property to virtual and using the `[NotMapped]` attribute on the property to prevent it from being included in the database schema.
+
+### Eager Loading:
+
+Eager loading is an alternative approach where you explicitly load all related data in a single query. This approach is useful when you need to access all related data at once. For example, if you have a User entity and a UserDetails entity, and you want to load both the User and UserDetails in the same query. In this case, you can use the `Include` method to specify the related entities you want to load.
+
+Here's an example of how to use eager loading:
+
+```csharp
+var user = context.Users
+    .Include(u => u.UserDetails)
+    .FirstOrDefault(u => u.Id == userId);
+```
+
+In this example, the `Include` method is used to load the `UserDetails` related to the `User` entity.
+
+### Explicit Loading:
+
+Explicit loading is another approach where you load related data on-demand but in a separate query from the main query. This approach is useful when you want to load related entities based on user actions. To explicitly load related entities, you can use the `Load` method on the related entity's navigation property.
+
+Here's an example of how to use explicit loading:
+
+```csharp
+var user = context.Users.FirstOrDefault(u => u.Id == userId);
+context.Entry(user).Collection(u => u.UserDetails).Load();
+```
+
+In this example, the `Load` method is used to explicitly load the `UserDetails` related to the `User` entity.
+
+### Choosing Between Lazy Loading and Eager Loading:
+
+The choice between lazy loading and eager loading depends on your specific requirements. If you need to access all related data at once, use eager loading. If you only need to access related data when it is accessed for the first time, use lazy loading.
+
+Remember that lazy loading can lead to additional round trips to the database, which can impact performance. Therefore, it is essential to use lazy loading with caution and only when necessary.
 
 ----------------------------------------------------------------
 
 What is the difference between "Add", "Attach", and "Update" methods in Entity Framework Core?
 
+In Entity Framework Core (EF Core), the `Add`, `Attach`, and `Update` methods serve different purposes in managing the state of entities.
+
+1. **Add**: The `Add` method is used to add new entities to the database. It sets the state of the entity to `Added`, which means that it will be inserted into the database when `SaveChanges` is called. This method is typically used when you want to add a new entity to the database or when you are working with entities that have store-generated keys.
+
+2. **Attach**: The `Attach` method is used to attach existing entities to the context. It sets the state of the entity to `Unchanged`, which means that it will not be modified when `SaveChanges` is called. This method is useful when you want to track an entity that already exists in the database or when you are working with entities that have key values assigned.
+
+3. **Update**: The `Update` method is similar to the `Attach` method, but it sets the state of the entity to `Modified`. This means that when you call `SaveChanges`, the context will generate SQL statements to update the entity's properties that have been modified. This method is useful when you want to update an existing entity in the database.
+
+In summary, the choice between `Add`, `Attach`, and `Update` depends on whether you want to add a new entity, track an existing entity, or update an existing entity in the database.
+
+
 ----------------------------------------------------------------
 
 What is the purpose of "Include" and "ThenInclude" methods in Entity Framework Core?
+
+In Entity Framework Core (EF Core), the `Include` and `ThenInclude` methods are used to specify the related entities that should be included in a query.
+
+The `Include` method is used to include a related entity in a query. For example, if you have a `User` entity and a `UserDetails` entity, and you want to load the `UserDetails` for a specific `User`, you can use the `Include` method like this:
+
+```csharp
+var user = context.Users
+    .Include(u => u.UserDetails)
+    .FirstOrDefault(u => u.Id == userId);
+```
+
+In this example, the `Include` method is used to load the `UserDetails` related to the `User` entity.
+
+The `ThenInclude` method is used to include multiple levels of related entities in a query. For example, if you have a `User` entity, a `UserDetails` entity, and a `UserAddress` entity, and you want to load the `UserAddress` for a specific `User`, you can use the `Include` and `ThenInclude` methods like this:
+
+```csharp
+var user = context.Users
+    .Include(u => u.UserDetails)
+    .ThenInclude(d => d.UserAddress)
+    .FirstOrDefault(u => u.Id == userId);
+```
+
+In this example, the `Include` method is used to load the `UserDetails` related to the `User` entity, and the `ThenInclude` method is used to load the `UserAddress` related to the `UserDetails` entity.
+
+The `Include` and `ThenInclude` methods are useful when you want to load related entities in a query, which can improve performance by reducing the number of round trips to the database.
 
 ----------------------------------------------------------------
 
 What is the purpose of "AsNoTracking" method in Entity Framework Core?
 
+The `AsNoTracking` method in Entity Framework Core (EF Core) is used to retrieve entities from the database without having EF Core track the changes to these entities. This method is particularly useful in scenarios where you are dealing with read-only data or when you do not intend to modify the retrieved entities.
+
+Here are some key points about the `AsNoTracking` method:
+
+- **No Change Tracking**: When using `AsNoTracking`, any changes made to the retrieved entities will not be automatically tracked by EF Core. If modifications are needed, you will have to manually update the context or use other methods to save changes.
+- **Performance Benefits**: By using `AsNoTracking`, you can improve performance, especially when dealing with large datasets. Since EF Core does not track changes that won't be saved back to the database, resources are saved.
+- **Read-Only Scenarios**: It is ideal for scenarios where data is retrieved purely for display or read-only purposes.
+- **Limitations**: As `AsNoTracking` disables change tracking, attempting to save changes on data retrieved using this method will result in errors.
+
+In summary, `AsNoTracking` is a valuable tool in EF Core for optimizing performance and handling read-only scenarios efficiently by retrieving data without the overhead of change tracking.
+
+
 ----------------------------------------------------------------  
 
 What is the purpose of "FromSqlRaw" and "FromSqlInterpolated" methods in Entity Framework Core?
 
+The `FromSqlRaw` and `FromSqlInterpolated` methods in Entity Framework Core are used to execute raw SQL queries directly against the database.
+
+- **FromSqlRaw**: This method is used to execute raw SQL queries with parameters. It allows you to pass parameters to the SQL query in a safe and parameterized way, which helps prevent SQL injection attacks. The `FromSqlRaw` method is suitable for scenarios where you need to execute raw SQL queries with parameters.
+
+- **FromSqlInterpolated**: This method is similar to `FromSqlRaw`, but it supports interpolated syntax for building the SQL query. Interpolated syntax makes the query more readable and allows for easy parameterization. The `FromSqlInterpolated` method automatically parameterizes the query, making it a safer option compared to directly concatenating strings in the query.
+
+In summary, `FromSqlRaw` and `FromSqlInterpolated` methods in EF Core provide ways to execute raw SQL queries while ensuring safety and readability by supporting parameterization and interpolated syntax, respectively.
+
 ----------------------------------------------------------------
 
 What is the purpose of "Query Types" in Entity Framework Core?
+
+
+Query types in Entity Framework Core are non-entity types that can be used to map to non-entity types or as the return type from raw SQL queries using the `FromSql` method. They are read-only and do not participate in add, update, or delete operations. Query types are particularly useful when you need to project SQL queries into types that are not mapped to database tables, enabling more efficient querying of data. They can be mapped to tables or views in the database and can take part in relationships. Additionally, query types can be used as the return type of raw SQL queries by including the `FromSql` method with the `DbQuery` type. Overall, query types provide a flexible way to work with non-entity types and enhance querying capabilities in EF Core applications[1][2][3].
 
 ----------------------------------------------------------------
 
