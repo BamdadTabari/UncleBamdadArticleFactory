@@ -1,1 +1,3 @@
 what is MTProto API?
+
+The MTProto API is a custom-made, open, and encrypted communication protocol developed by Telegram for exchanging information between a client and the Telegram servers. It is the primary protocol used by Telegram to facilitate communication between clients and servers. The MTProto API is distinct from the Bot API, which is an HTTP(S) interface specifically designed for building bots using a subset of the main Telegram API. The MTProto API is known for its security features and is utilized by various libraries like Pyrogram to interact with Telegram's servers efficiently
