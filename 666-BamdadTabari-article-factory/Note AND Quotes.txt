@@ -56,6 +56,28 @@ win  =>  g++ sample.cpp
 GNU => g++ sample.cxx  / or g++ sample.cpp
 
 ------------------------------------------------------------------------------------------------
+
+NQ 5:
+
+* Compile typically means compile the code in the file that is currently open.
+
+* Build or Make typically means compile the code for all the source code files in the
+project.This is often an incremental process.That is, if the project has three files,and
+you change just one,and then just that one is recompiled.
+
+* Build All typically means compile all the source code files from scratch.
+
+* As described earlier, Link means combine the compiled source code with the necessary library code.
+
+* Run or Execute means run the program.Typically, if you have not yet done the
+earlier steps, Run does them before trying to run a program.
+
+* Debug means run the program with the option of going through step-by-step.
+
+* A compiler may offer the option of Debug and Release versions.The former contains
+extra code that increases the program size, slows program execution, but enables
+detailed debugging features.
+
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
