@@ -17,9 +17,34 @@ hitch, we say the program is "portable".
 
 NQ 2 :
 
+The Mechanics of Creating a Program
+
+1. Use a text editor of some sort to write the program and save it in a file.This file
+constitutes the source code for your program.
+2. Compile the source code.This means running a program that translates the source
+code to the internal language, called machine language, used by the host computer.
+The file containing the translated program is the object code for your program.
+3. Link the object code with additional code. For example, C++ programs normally
+use libraries.A C++ library contains object code for a collection of computer routines, called functions, to perform tasks such as displaying information onscreen or
+calculating the square root of a number. Linking combines your object code with
+object code for the functions you use and with some standard startup code to produce a runtime version of your program.The file containing this final product is
+called the executable code.
 
 
 ------------------------------------------------------------------------------------------------
+
+NQ 3 :
+
+C++ Implementation Source Code Extension(s)
+
+Unix  =>  C, cc, cxx, c
+GNU C++  => C, cc, cxx, cpp, c++
+Digital Mars  => cpp, cxx
+Borland C++  => cpp
+Watcom  => cpp
+Microsoft Visual C++  => cpp, cxx, cc
+Freestyle CodeWarrior  => cpp, cp, cc, cxx, c+
+
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
