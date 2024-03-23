@@ -79,10 +79,76 @@ extra code that increases the program size, slows program execution, but enables
 detailed debugging features.
 
 ------------------------------------------------------------------------------------------------
+
 NQ 6:
 
+suppose I want to write C++ code on my Windows machine. 
+What do I need to do to ensure everything will be ok?
+
+To write C++ code on your Windows machine using Visual Studio Code (VSCode), follow these steps:
+
+1. Install the C++ extension for VSCode: 
+You can install the C++ extension by searching for 'c++' 
+in the Extensions view (⇧⌘X (Windows, Linux Ctrl+Shift+X)). 
+This extension provides IntelliSense support, debugging, and other features for C++ development.
+
+2. Install a C++ compiler: 
+You can use either Microsoft's Visual C++ compiler (MSVC) or the GNU Compiler Collection (GCC) 
+with the GNU Debugger (GDB) for debugging. If you're using MSVC, 
+you can install it through the Visual Studio Installer. 
+If you're using GCC, you can install it using a package manager like Chocolatey or WinGet.
+
+3. Configure VSCode for the compiler: You need to create a `tasks.json` file in the `.vscode` folder of your workspace. This file stores the build configurations for your C++ projects. You can find examples of how to create this file in the VSCode documentation.
+
+4. Create a source code file: In the File Explorer title bar, select New File and name the file with a `.cpp` extension. Add your C++ code to this file.
+
+5. Compile and debug your code: You can use VSCode to compile your C++ code using the configured compiler. You can also use GDB for debugging if you're using GCC.
+
+For more detailed instructions, you can refer to the VSCode documentation and tutorials available online.
+
+
 ------------------------------------------------------------------------------------------------
+
+NQ 7:
+
+C++ is a popular programming language.
+
+C++ is used to create computer programs.
+
+C++ is one of the most used language in game development.
+
+C++ is case sensitive.
+
+one example of its syntax:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Hello World!";
+  return 0;
+}
+
+remember if you want to learn c++ from code + book => you must see my repo: 
+https://github.com/BamdadTabari/Uncle-Bamdad-CPlusPlus-Programming-Hand-On-Learning
+
 ------------------------------------------------------------------------------------------------
+
+NQ 8 : (just a sample)
+
+// myfirst.cpp -- displays a message
+
+#include <iostream>                          // a PREPROCESSOR directive
+int main() // function header
+{                                            // start of function body
+    using namespace std;                     // make definitions visible
+    cout << "Come up and C++ me some time."; // message
+    cout << endl;                            // start a new line
+    cout << "You won’t regret it!" << endl;  // more output
+    return 0;                                // terminate main()
+}                                            // end of function body
+
+
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
