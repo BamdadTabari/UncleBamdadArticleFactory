@@ -1,2 +1,4 @@
+Note AND Quotes
+
 If you can recompile the program without making changes and it runs without a
 hitch, we say the program is "portable".
