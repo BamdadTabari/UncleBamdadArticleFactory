@@ -3,7 +3,7 @@ Note AND Quotes for C#
 
 NQ 1 :
 
-Assigning an emoji by converting from Unicode.
+"Assigning an emoji by converting from Unicode."
 
 code sample:
 
@@ -12,7 +12,7 @@ string grinningEmoji = char.ConvertFromUtf32(0x1F600);
 
 NQ 2 :
 
-OutputEncoding
+"OutputEncoding"
 
 code sample:
 
@@ -23,6 +23,24 @@ Console.WriteLine(grinningEmoji);
 ------------------------------------------------------------------------------------------------
 
 NQ 3 :
+
+"Verbatim strings"
+
+When storing text in a string variable, you can include escape sequences, which represent special 
+characters like tabs and new lines using a backslash, as shown in the following code:
+
+string fullNameWithTabSeparator = "Bob\tSmith";
+
+But what if you are storing the path to a file on Windows, and one of the folder names starts with a T, 
+as shown in the following code?
+
+string filePath = "C:\televisions\sony\bravia.txt";
+
+The compiler will convert the \t into a tab character and you will get errors!
+
+You must prefix it with the @ symbol to use a verbatim literal string, as shown in the following code:
+
+string filePath = @"C:\televisions\sony\bravia.txt"
 
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
