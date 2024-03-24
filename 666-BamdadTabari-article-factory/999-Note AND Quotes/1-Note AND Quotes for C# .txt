@@ -48,9 +48,12 @@ NQ 4 :
 
 "Raw string literals"
 
-Introduced in C# 11, raw string literals are convenient for entering any arbitrary text without needing to escape the contents. They make it easy to define literals containing other languages like XML, 
+Introduced in C# 11, raw string literals are convenient for entering any arbitrary text without needing 
+to escape the contents. They make it easy to define literals containing other languages like XML, 
 HTML, or JSON.
-Raw string literals start and end with three or more double-quote characters, as shown in the following code:
+Raw string literals start and end with three or more double-quote characters, 
+as shown in the following code:
+
 string xml = """
  <person age="50">
  <first_name>Mark</first_name>
