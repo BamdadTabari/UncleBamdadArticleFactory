@@ -62,6 +62,37 @@ string xml = """
 
 
 ------------------------------------------------------------------------------------------------
+
+NQ 5:
+
+"Raw interpolated string literals"
+
+You can mix interpolated strings that use curly braces { } with raw string literals. You specify the 
+number of braces that indicates a replaced expression by adding that number of dollar signs to the 
+start of the literal. Any fewer braces than that are treated as raw content.
+For example, if we want to define some JSON, single braces will be treated as normal braces, but the 
+two dollar symbols tell the compiler that any two curly braces indicate a replaced expression value, 
+as shown in the following code:
+
+var person = new { FirstName = "Alice", Age = 56 };
+string json = $$"""
+ {
+ "first_name": "{{person.FirstName}}",
+ "age": {{person.Age}},
+ "calculation": "{{{ 1 + 2 }}}"
+ }
+ """;
+Console.WriteLine(json);
+
+The previous code would generate the following JSON document:
+{
+ "first_name": "Alice",
+ "age": 56,
+ "calculation": "{3}"
+}
+
+The number of dollars tells the compiler how many curly braces are needed to become recognized 
+as an interpolated expression.
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
