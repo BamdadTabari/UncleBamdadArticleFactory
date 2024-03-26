@@ -4,3 +4,6 @@
 3-  Bell Labs
 
 4- .NET ASPIRE
+
+
+5- write all cmd commands. with sample, maybe write a book from it
