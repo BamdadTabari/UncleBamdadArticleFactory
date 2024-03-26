@@ -3,3 +3,6 @@
 2- tshark ? (kali tool for Evil Twin Attack)
 
 3- more tools for Evil Twin Attack ?
+
+4- airmon-ng check kill  ???
+
