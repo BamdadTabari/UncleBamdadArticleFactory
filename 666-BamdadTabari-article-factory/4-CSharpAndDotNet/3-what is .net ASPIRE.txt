@@ -117,3 +117,20 @@ It ensures a consistent configuration and dependency injection experience for co
 making it easier to manage resources within cloud-native applications.
 
 
+*** Summery :
+.NET Aspire is a cloud-native development stack introduced by Microsoft as part of .NET 8, 
+aimed at simplifying the creation of resilient, observable, and configurable cloud-native applications 
+within the .NET ecosystem. 
+It offers orchestration features for managing multi-project applications and their dependencies, 
+standardized component packages delivered as NuGet packages for services like Redis or Postgres, 
+and user-friendly tooling experiences through project templates and command-line interface 
+support in Visual Studio and the dotnet CLI. 
+.NET Aspire enhances application development by providing a cohesive set of tools and design patterns, 
+streamlining the development process and enabling developers to build, provision, deploy, configure, 
+test, run, and observe cloud applications seamlessly. 
+The stack has gained significant community interest, 
+with a preview already available and general availability planned for the spring of 2024. 
+Additionally, .NET Aspire includes features like service discovery, telemetry, resilience, 
+and health checks by default, making it a valuable framework for building cloud-native applications 
+efficiently.
+
