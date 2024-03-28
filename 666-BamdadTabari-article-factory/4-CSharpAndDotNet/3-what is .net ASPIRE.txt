@@ -107,7 +107,13 @@ and gain insights into the behavior of their applications.
 4-Service Discovery and Health Checks: 
 With built-in service discovery capabilities, 
 .NET Aspire simplifies the process of locating services within a distributed application, 
-a crucial aspect of microservices architectures. Additionally, it enables health checks for services by default, providing basic availability and state information.
-5-Consistent Configuration and Dependency Injection: The app host provided by .NET Aspire offers a lightweight, extensible, and cross-platform solution for running .NET Aspire apps. It ensures a consistent configuration and dependency injection experience for components, making it easier to manage resources within cloud-native applications.
+a crucial aspect of microservices architectures. Additionally, 
+it enables health checks for services by default, providing basic availability and state information.
+
+5-Consistent Configuration and Dependency Injection: 
+The app host provided by .NET Aspire offers a lightweight, extensible, 
+and cross-platform solution for running .NET Aspire apps. 
+It ensures a consistent configuration and dependency injection experience for components, 
+making it easier to manage resources within cloud-native applications.
 
 
