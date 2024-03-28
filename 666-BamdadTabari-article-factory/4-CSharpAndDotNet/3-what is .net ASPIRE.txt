@@ -93,8 +93,17 @@ It provides features for orchestrating multi-project applications and their depe
 making it easier to develop and run distributed apps efficiently.
 
 2-Integration with Azure and Other Cloud Providers: 
-While .NET Aspire is not limited to Azure, it offers capabilities that can help integrate with Azure services. Additionally, developers can leverage .NET Aspire with other cloud providers like AWS or GCP to build cloud-native applications, enabling flexibility in choosing the cloud platform that best suits their needs.
-3-Observability and Telemetry: .NET Aspire components automatically set up logging, tracing, and metrics configurations, which are essential for observability in cloud-native applications. These features allow developers to monitor application performance, track requests, and gain insights into the behavior of their applications.
+While .NET Aspire is not limited to Azure, it offers capabilities that can help integrate with Azure services. 
+Additionally, developers can leverage .NET Aspire with other cloud providers like AWS or 
+GCP to build cloud-native applications, enabling flexibility in choosing the cloud platform 
+that best suits their needs.
+
+3-Observability and Telemetry: 
+.NET Aspire components automatically set up logging, tracing, and metrics configurations, 
+which are essential for observability in cloud-native applications. 
+These features allow developers to monitor application performance, track requests, 
+and gain insights into the behavior of their applications.
+
 4-Service Discovery and Health Checks: With built-in service discovery capabilities, .NET Aspire simplifies the process of locating services within a distributed application, a crucial aspect of microservices architectures. Additionally, it enables health checks for services by default, providing basic availability and state information.
 5-Consistent Configuration and Dependency Injection: The app host provided by .NET Aspire offers a lightweight, extensible, and cross-platform solution for running .NET Aspire apps. It ensures a consistent configuration and dependency injection experience for components, making it easier to manage resources within cloud-native applications.
 
