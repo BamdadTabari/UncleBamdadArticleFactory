@@ -161,8 +161,9 @@ NQ 9 :
 
 
 IEEE 754 is a technical standard for floating-point arithmetic 
-established in 1985 by the IEEE
+established in 1985 by the IEEE.
 IEEE stands for Institute of Electrical and Electronics Engineers .
+
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
