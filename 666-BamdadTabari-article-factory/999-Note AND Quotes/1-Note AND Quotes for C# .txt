@@ -168,6 +168,10 @@ IEEE stands for Institute of Electrical and Electronics Engineers .
 
 NQ 10 :
 
+The following image shows a simplification of how a computer represents the number 12.75 in binary 
+notation. Note the bits with the value 1 in the 8, 4, ½, and ¼ columns.
+8 + 4 + ½ + ¼ = 12¾ = 12.75.
+
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
