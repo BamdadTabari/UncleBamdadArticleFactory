@@ -109,7 +109,19 @@ For example, you could write the value for 1 million in decimal notation, that i
 You can even use the 2/3 grouping common in India: 10_00_000.
 
 ------------------------------------------------------------------------------------------------
+
+NQ 7 :
+
+"Using binary or hexadecimal notation"
+
+To use binary notation, that is, Base 2, using only 1s and 0s, start the number literal with 0b. 
+To use hexadecimal notation, that is, Base 16, using 0 to 9 and A to F, start the number literal with 0x.
+
+
 ------------------------------------------------------------------------------------------------
+
+NQ 8 :
+
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
