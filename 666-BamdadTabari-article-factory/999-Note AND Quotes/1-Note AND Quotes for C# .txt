@@ -242,6 +242,16 @@ height; you will only compare values using greater than or less than, but never 
 
 NQ 13 : 
 
+Good Practice: Never compare double values using ==. During the First Gulf War, an 
+American Patriot missile battery used double values in its calculations. The inaccuracy 
+caused it to fail to track and intercept an incoming Iraqi Scud missile, and 28 soldiers 
+were killed; you can read about this at https://www.ima.umn.edu/~arnold/disasters/
+patriot.html. The Patriot missile system has improved since then. “Forty years after it 
+was brought into service, the Patriot air-defense system is finally doing what it was designed for.” 
+“No one was 100% sure that the Patriot was capable of destroying a Kh-47 hypersonic missile,” 
+said Col. Serhiy Yaremenko, commander of the 96th Anti-Aircraft Missile Brigade, which defends 
+Kyiv. “Ukrainians proved it.”: https://archive.ph/2023.06.11-132200/https://www.
+wsj.com/amp/articles/u-s-patriot-missile-is-an-unsung-hero-of-ukrainewar-db6053a0.
 
 
 ------------------------------------------------------------------------------------------------
