@@ -258,7 +258,23 @@ wsj.com/amp/articles/u-s-patriot-missile-is-an-unsung-hero-of-ukrainewar-db6053a
 
 NQ 14:
 
+Code=>
 
+Console.WriteLine("Using decimals:");
+decimal c = 0.1M; // M suffix means a decimal literal value
+decimal d = 0.2M;
+if (c + d == 0.3M)
+{
+ Console.WriteLine($"{c} + {d} equals {0.3M}");
+}
+else
+{
+ Console.WriteLine($"{c} + {d} does NOT equal {0.3M}");
+}
+
+output => 
+Using decimals:
+0.1 + 0.2 equals 0.
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
