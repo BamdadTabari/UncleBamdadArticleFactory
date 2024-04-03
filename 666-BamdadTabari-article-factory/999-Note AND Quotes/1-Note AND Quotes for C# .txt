@@ -197,6 +197,8 @@ Comparing double and decimal types
 
 Let’s jump to code=>
 
+First lets chek double
+
 Console.WriteLine("Using doubles:"); 
 double a = 0.1;
 double b = 0.2;
