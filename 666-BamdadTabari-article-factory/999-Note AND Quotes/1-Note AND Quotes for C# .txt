@@ -258,6 +258,8 @@ wsj.com/amp/articles/u-s-patriot-missile-is-an-unsung-hero-of-ukrainewar-db6053a
 
 NQ 14:
 
+let’s see the same code (in NQ 12) using the decimal number type
+
 Code=>
 
 Console.WriteLine("Using decimals:");
