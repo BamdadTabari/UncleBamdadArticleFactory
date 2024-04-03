@@ -5,7 +5,6 @@
 
 4- .NET ASPIRE
 
-
 5- write all cmd commands. with sample, maybe write a book from it
 
 6- Institute of Electrical and Electronics Engineers (IEEE) Standard for Floating-Point Arithmetic?
