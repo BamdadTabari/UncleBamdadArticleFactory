@@ -191,6 +191,9 @@ Console.WriteLine($"decimal uses {sizeof(decimal)} bytes and can store numbers i
 
 ------------------------------------------------------------------------------------------------
 
+
+
+
 NQ 12 :
 
 Comparing double and decimal types
